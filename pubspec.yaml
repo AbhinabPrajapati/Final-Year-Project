@@ -12,6 +12,9 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   intl: any
+  go_router: ^17.0.0
+  smooth_page_indicator: ^1.2.1
+  lottie: ^3.1.0
   
   # Core audio (mobile)
   permission_handler: ^12.0.1
@@ -46,6 +49,7 @@ flutter:
   
   assets:
     - assets/icon/
+    - assets/animations/
 
 flutter_launcher_icons:
   android: true

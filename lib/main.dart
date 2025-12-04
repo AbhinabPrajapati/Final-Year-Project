@@ -3,6 +3,8 @@ import 'dart:typed_data';
 import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_tuner/onboarding.dart';
+import 'package:go_router/go_router.dart';
 import 'package:pitch_detector_dart/pitch_detector.dart';
 import 'package:fftea/fftea.dart';
 import 'package:collection/collection.dart';
@@ -21,7 +23,17 @@ class TunerApp extends StatelessWidget {
       designSize: const Size(360, 800),
       minTextAdapt: true,
       splitScreenMode: true,
-      child: MaterialApp(
+      child: MaterialApp.router(
+        routerConfig: GoRouter(initialLocation: '/onBoarding', routes: [
+          GoRoute(
+            path: '/onBoarding',
+            builder: (context, state) => const OnBoardingScreen(),
+          ),
+          GoRoute(
+            path: '/home',
+            builder: (context, state) => const TunerPage(),
+          ),
+        ]),
         title: 'Precision Tuner',
         theme: ThemeData(
           brightness: Brightness.dark,
@@ -29,14 +41,13 @@ class TunerApp extends StatelessWidget {
           colorScheme: ColorScheme.dark(
             primary: Colors.blueAccent,
             secondary: Colors.cyanAccent,
-            surface: const Color(0xFF1E1E1E),
-            background: const Color(0xFF121212),
+            surface: Color(0xFF1E1E1E),
+            background: Color(0xFF121212),
           ),
           scaffoldBackgroundColor: const Color(0xFF121212),
           useMaterial3: true,
           fontFamily: 'Inter',
         ),
-        home: const TunerPage(),
       ),
     );
   }
